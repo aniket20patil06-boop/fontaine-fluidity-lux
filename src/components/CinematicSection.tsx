@@ -6,29 +6,19 @@ const CinematicSection = () => {
       id="experience"
       className="relative h-[70vh] md:h-screen overflow-hidden flex items-center justify-center"
     >
-      {/* Video background (using animated gradient as cinematic stand-in) */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 gradient-navy" />
-        {/* Animated water-like layers */}
-        {[0, 1, 2, 3].map((i) => (
-          <motion.div
-            key={i}
-            className="absolute inset-0"
-            style={{
-              background: `radial-gradient(ellipse at ${30 + i * 15}% ${40 + i * 10}%, hsl(215 80% 55% / ${0.06 - i * 0.01}), transparent 60%)`,
-            }}
-            animate={{
-              x: [0, 30 * (i % 2 === 0 ? 1 : -1), 0],
-              y: [0, 20 * (i % 2 === 0 ? -1 : 1), 0],
-            }}
-            transition={{
-              duration: 6 + i * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/brand-video.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-navy-deep/60" />
 
       {/* Content overlay */}
       <div className="relative z-10 text-center px-6">
