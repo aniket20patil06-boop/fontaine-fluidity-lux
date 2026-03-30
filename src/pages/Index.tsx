@@ -1,16 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from "react";
+import LoadingScreen from "@/components/LoadingScreen";
+import Particles from "@/components/Particles";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import ProductSection from "@/components/ProductSection";
+import PuritySection from "@/components/PuritySection";
+import FeaturesSection from "@/components/FeaturesSection";
+import CinematicSection from "@/components/CinematicSection";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <>
+      <LoadingScreen isLoading={isLoading} />
+      <Particles />
+      <Navbar />
+      <main className="relative z-10">
+        <HeroSection />
+        <ProductSection />
+        <PuritySection />
+        <FeaturesSection />
+        <CinematicSection />
+        <CTASection />
+        <Footer />
+      </main>
+    </>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
